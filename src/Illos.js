@@ -1,9 +1,11 @@
 import styled from "styled-components";
+import CardCarousel from "./components/CardCarousel";
 
 const Illos = () => {
     return (
         <IllosWrapper>
             This is Illos
+            <CardCarousel/>
         </IllosWrapper>
     )
 }
