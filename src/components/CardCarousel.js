@@ -1,31 +1,8 @@
-import React, { useEffect, useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import styled from "styled-components";
-import "./styles.css";
-
-const cardItems = [
-  {
-    id: 1,
-    title: "Stacked Card Carousel",
-    copy:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet dui scelerisque, tempus dui non, blandit nulla. Etiam sed interdum est."
-  },
-  {
-    id: 2,
-    title: "Second Item",
-    copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-  },
-  {
-    id: 3,
-    title: "A Third Card",
-    copy:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet dui scelerisque, tempus dui non, blandit nulla."
-  },
-  {
-    id: 4,
-    title: "Fourth",
-    copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-  }
-];
+import { ReactComponent as BackIcon } from "./../assets/back_icon.svg";
+import { ReactComponent as NextIcon } from "./../assets/next_icon.svg";
+import { illos } from "../data/illos";
 
 function determineClasses(indexes, cardIndex) {
   if (indexes.currentIndex === cardIndex) {
@@ -38,19 +15,14 @@ function determineClasses(indexes, cardIndex) {
   return "inactive";
 }
 
-const CardCarousel = () => {
-  const [indexes, setIndexes] = useState({
-    previousIndex: 0,
-    currentIndex: 0,
-    nextIndex: 1
-  });
+const CardCarousel = ({indexes, setIndexes}) => {
 
   const handleForwardCardTransition = useCallback(() => {
     // If we've reached the end, start again from the first card,
     // but carry previous value over
-    if (indexes.currentIndex >= cardItems.length - 1) {
+    if (indexes.currentIndex >= illos.length - 1) {
       setIndexes({
-        previousIndex: cardItems.length - 1,
+        previousIndex: illos.length - 1,
         currentIndex: 0,
         nextIndex: 1
       });
@@ -59,7 +31,7 @@ const CardCarousel = () => {
         previousIndex: prevState.currentIndex,
         currentIndex: prevState.currentIndex + 1,
         nextIndex:
-          prevState.currentIndex + 2 === cardItems.length
+          prevState.currentIndex + 2 === illos.length
             ? 0
             : prevState.currentIndex + 2
       }));
@@ -71,45 +43,38 @@ const CardCarousel = () => {
     // but carry previous value over
     if (indexes.currentIndex <= 0) {
       setIndexes({
-        previousIndex: 0,
-        currentIndex: cardItems.length - 1,
-        nextIndex: cardItems.length - 2,
+        previousIndex: illos.length - 2,
+        currentIndex: illos.length - 1,
+        nextIndex: 0,
       });
     } else {
       setIndexes(prevState => ({
-        previousIndex: prevState.currentIndex,
+        previousIndex: prevState.previousIndex - 1,
         currentIndex: prevState.currentIndex - 1,
-        nextIndex:
-          prevState.currentIndex - 2 === 0
-            ? cardItems.length - 1
-            : prevState.currentIndex - 2
+        nextIndex: prevState.currentIndex
       }));
     }
   }, [indexes.currentIndex]);
 
-  /* useEffect(() => {
-    const transitionInterval = setInterval(() => {
-        handleForwardCardTransition();
-    }, 4000);
-
-    return () => clearInterval(transitionInterval);
-  }, [handleForwardCardTransition, indexes]); */
-
   return (
     <Container>
-        <h1 onClick={() => handleBackwardCardTransition()}>back</h1>
-        <h1 onClick={() => handleForwardCardTransition()}>next</h1>
+      <ArrowWrapper>
+        <BackIcon fill={illos[indexes.currentIndex].text_color} onClick={() => handleBackwardCardTransition()} />
+        <TimeStamp color={illos[indexes.currentIndex].text_color}>{illos[indexes.currentIndex].start_time}</TimeStamp>
+      </ArrowWrapper>
       <CarouselWrapper>
-        {cardItems.map((card, index) => (
-          <li
+        {illos.map((card, index) => (
+          <Card
             key={card.id}
-            className={`card ${determineClasses(indexes, index)}`}
-          >
-            <h2>{card.title}</h2>
-            <p>{card.copy}</p>    
-          </li>
+            className={`${determineClasses(indexes, index)}`}
+            img_link={card.img_link}
+          />
         ))}
       </CarouselWrapper>
+      <ArrowWrapper>
+        <NextIcon fill={illos[indexes.currentIndex].text_color} onClick={() => handleForwardCardTransition()} />
+        <TimeStamp color={illos[indexes.currentIndex].text_color}>{illos[indexes.currentIndex].end_time}</TimeStamp>
+      </ArrowWrapper>
     </Container>
   );
 };
@@ -117,18 +82,71 @@ const CardCarousel = () => {
 export default CardCarousel;
 
 const Container = styled.div`
+  display: flex;
+  height: 60vw;
+`
 
+const ArrowWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: auto 0rem;
 
+  :hover {
+    opacity: 0.5;
+  }
+
+  svg {
+    margin: 0.5rem auto;
+  }
+`
+
+const TimeStamp = styled.div`
+  color: ${props => props.color};
+  font-family: 'Catamaran', serif;
 `
 
 const CarouselWrapper = styled.div`
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    height: 200px;
-    margin: 100px auto;
-    align-items: center;
-    position: relative;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  margin: 100px auto;
+  align-items: center;
+  position: relative;
+`
+
+const Card = styled.div`
+  background: url(${props => props.img_link});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  border-radius: 8px;
+  box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
+  width: 70vw;
+  height: 40vw;
+  transition: all 0.75s ease;
+  opacity: 0;
+  position: absolute;
+  transform: scale(0.85) translateY(-100px);
+  color: black;
+  
+  &.active {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    box-shadow: 0 30px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  &.next {
+    opacity: 0.5;
+    z-index: 0;
+  }
+  
+  &.prev {
+    transform: scale(1.1) translateY(50px);
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+  }  
 
 `
