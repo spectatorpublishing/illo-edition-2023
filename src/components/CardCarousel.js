@@ -87,16 +87,18 @@ const CardCarousel = () => {
     }
   }, [indexes.currentIndex]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const transitionInterval = setInterval(() => {
         handleForwardCardTransition();
     }, 4000);
 
     return () => clearInterval(transitionInterval);
-  }, [handleForwardCardTransition, indexes]);
+  }, [handleForwardCardTransition, indexes]); */
 
   return (
     <Container>
+        <h1 onClick={() => handleBackwardCardTransition()}>back</h1>
+        <h1 onClick={() => handleForwardCardTransition()}>next</h1>
       <CarouselWrapper>
         {cardItems.map((card, index) => (
           <li
@@ -104,7 +106,7 @@ const CardCarousel = () => {
             className={`card ${determineClasses(indexes, index)}`}
           >
             <h2>{card.title}</h2>
-            <p>{card.copy}</p>
+            <p>{card.copy}</p>    
           </li>
         ))}
       </CarouselWrapper>
