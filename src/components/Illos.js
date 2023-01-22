@@ -55,8 +55,15 @@ const DescriptionWrapper = styled.div`
     color: ${props => props.textColor};
     font-family: catamaran;
     font-size: 1.5rem;
+    text-indent: 2rem;
     transition: all 0.75s ease;
     width: 65vw;
     align-self: center;
     padding: 1rem;
+
+    ::first-letter {
+        font-family: italiana;
+        font-size: 3rem;
+        font-weight: 400;
+    }
 `
