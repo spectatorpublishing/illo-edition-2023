@@ -17,6 +17,9 @@ const Illos = () => {
             <Link to="/">
                 <LeftArrow style={{zIndex:"1"}}fill={illos[indexes.currentIndex].text_color}/>
             </Link>
+            <ClockWrapper>
+                <img src={illos[indexes.currentIndex].clock_image}/>
+            </ClockWrapper>
             <CardCarousel indexes={indexes} setIndexes={setIndexes}/>
             <DescriptionWrapper textColor={illos[indexes.currentIndex].text_color}>{illos[indexes.currentIndex].text}</DescriptionWrapper>
         </IllosWrapper>
@@ -30,6 +33,20 @@ const IllosWrapper = styled.div`
     transition: all 0.75s ease;
     padding: 5rem;
     min-height: 100vh;
+`
+
+const ClockWrapper = styled.div`
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    margin: 2rem 2rem 0rem auto;
+
+    img {
+        width: 6rem;
+        height: 6rem;
+        transition: all 0.75s ease;
+    }
 `
 
 const DescriptionWrapper = styled.div`
