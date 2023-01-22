@@ -33,6 +33,8 @@ const IllosWrapper = styled.div`
     transition: all 0.75s ease;
     padding: 5rem;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 `
 
 const ClockWrapper = styled.div`
@@ -50,6 +52,11 @@ const ClockWrapper = styled.div`
 `
 
 const DescriptionWrapper = styled.div`
-    color: ${props => props.textColor}
+    color: ${props => props.textColor};
+    font-family: catamaran;
+    font-size: 1.5rem;
     transition: all 0.75s ease;
+    width: 65vw;
+    align-self: center;
+    padding: 1rem;
 `
