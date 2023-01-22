@@ -83,7 +83,7 @@ export default CardCarousel;
 
 const Container = styled.div`
   display: flex;
-  height: 60vw;
+  padding-bottom: 4rem;
 `
 
 const ArrowWrapper = styled.div`
@@ -113,6 +113,7 @@ const CarouselWrapper = styled.div`
   margin: 100px auto;
   align-items: center;
   position: relative;
+  margin-bottom: 0;
 `
 
 const Card = styled.div`
