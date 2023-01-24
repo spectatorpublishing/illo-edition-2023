@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import CardCarousel from "./CardCarousel";
 import React, {useState} from "react";
 import { ReactComponent as LeftArrow } from "./../assets/left_arrow.svg";

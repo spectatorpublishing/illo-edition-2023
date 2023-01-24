@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import home_background from "./../assets/home_background.png"
 import right_arrow from "./../assets/right_arrow.svg"
 import home_orb from "./../assets/home_orb.png"

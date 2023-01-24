@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { ReactComponent as BackIcon } from "./../assets/back_icon.svg";
 import { ReactComponent as NextIcon } from "./../assets/next_icon.svg";
 import { illos } from "../data/illos";
@@ -109,11 +109,12 @@ const CarouselWrapper = styled.div`
   padding: 0;
   display: flex;
   flex-direction: column;
-  height: 70vh;
-  margin: 100px auto;
+  margin: 0 auto 15rem auto;
   align-items: center;
   position: relative;
   margin-bottom: 0;
+
+  height: 65vh;
 `
 
 const Card = styled.div`
@@ -123,13 +124,14 @@ const Card = styled.div`
   background-position: center center;
   border-radius: 8px;
   box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
-  width: 70vw;
-  height: 40vw;
   transition: all 0.75s ease;
   opacity: 0;
   position: absolute;
   transform: scale(0.85) translateY(-100px);
   color: black;
+
+  width: 60vw;
+  height: 38vw;
   
   &.active {
     opacity: 1;
@@ -149,5 +151,4 @@ const Card = styled.div`
     opacity: 0;
     visibility: hidden;
   }  
-
 `
