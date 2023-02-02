@@ -3,6 +3,7 @@ import styled from "styled-components/macro";
 import { ReactComponent as BackIcon } from "./../assets/back_icon.svg";
 import { ReactComponent as NextIcon } from "./../assets/next_icon.svg";
 import { illos } from "../data/illos";
+import { device } from "../device";
 
 function determineClasses(indexes, cardIndex) {
   if (indexes.currentIndex === cardIndex) {
@@ -115,6 +116,11 @@ const CarouselWrapper = styled.div`
   margin-bottom: 0;
 
   height: 65vh;
+
+  @media (max-width:${device.tablet}) {
+    margin: 3rem auto 0rem auto;
+    height: 40vh;
+  }
 `
 
 const Card = styled.div`

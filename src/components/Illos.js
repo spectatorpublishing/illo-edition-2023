@@ -4,6 +4,7 @@ import React, {useState} from "react";
 import { ReactComponent as LeftArrow } from "./../assets/left_arrow.svg";
 import { illos } from "../data/illos";
 import { Link } from "react-router-dom";
+import { device } from "../device";
 
 const Illos = () => {
     const [indexes, setIndexes] = useState({
@@ -35,6 +36,10 @@ const IllosWrapper = styled.div`
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+
+    @media (max-width:${device.tablet}) {
+        padding: 2rem;
+    }
 `
 
 const ClockWrapper = styled.div`
@@ -48,6 +53,11 @@ const ClockWrapper = styled.div`
         width: 6rem;
         height: 6rem;
         transition: all 0.75s ease;
+
+        @media (max-width:${device.tablet}) {
+            width: 4rem;
+            height: 4rem;
+        }
     }
 `
 
