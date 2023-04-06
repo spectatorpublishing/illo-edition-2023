@@ -19,15 +19,48 @@ const Illos = () => {
                 <LeftArrow style={{zIndex:"1"}}fill={illos[indexes.currentIndex].text_color}/>
             </Link>
             <ClockWrapper>
-                <img src={illos[indexes.currentIndex].clock_image}/>
+                <img src={illos[indexes.currentIndex].clock_image} alt={illos[indexes.currentIndex].start_time}/>
             </ClockWrapper>
+
             <CardCarousel indexes={indexes} setIndexes={setIndexes}/>
+
+            <IlloInfo textColor={illos[indexes.currentIndex].text_color}>
+                <p>{illos[indexes.currentIndex].location}</p>
+                <p className="name">{illos[indexes.currentIndex].illustrator}</p>
+            </IlloInfo>
             <DescriptionWrapper textColor={illos[indexes.currentIndex].text_color}>{illos[indexes.currentIndex].text}</DescriptionWrapper>
         </IllosWrapper>
     )
 }
 
 export default Illos;
+
+const IlloInfo = styled.div`
+    color: ${props => props.textColor};
+    padding-left:1rem;
+    padding-right: 1rem;
+    width: 65vw;
+    align-self: center;
+    display: flex;
+    font-weight: 600;
+
+    .name {
+        font-weight: 400;
+        margin-left: auto;
+        @media (max-width:${device.tablet}) {
+            margin-left: 0;
+        }
+    }
+
+    @media (max-width:${device.tablet}) {
+        font-size: 1rem;
+        flex-direction: column;
+
+        p {
+            margin: 0;
+        }
+    }
+`
 
 const IllosWrapper = styled.div`
     background-color: ${props => props.background};
@@ -75,5 +108,13 @@ const DescriptionWrapper = styled.div`
         font-family: italiana;
         font-size: 3rem;
         font-weight: 400;
+
+        @media (max-width:${device.tablet}) {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (max-width:${device.tablet}) {
+        font-size: 1rem;
     }
 `

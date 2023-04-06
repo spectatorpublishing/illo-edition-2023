@@ -84,7 +84,11 @@ export default CardCarousel;
 
 const Container = styled.div`
   display: flex;
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
+
+  @media (max-width:${device.tablet}) {
+    padding-bottom: 0rem;
+  }
 `
 
 const ArrowWrapper = styled.div`
