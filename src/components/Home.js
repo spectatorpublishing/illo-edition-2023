@@ -12,10 +12,9 @@ const Home = () => {
                     <img src={right_arrow} />
                 </Link>
             </ArrowWrapper>
-            <MainTitle>Main Title/Text</MainTitle>
+            <MainTitle>24 Hours on Campus</MainTitle>
             <MainContent>
-                <p>Lorem ipsum dolor sit amet. Cum veritatis nulla rem neque voluptas est voluptas iure et dolorum ipsum? Vel voluptatem adipisci et voluptatibus nihil sit alias totam. Et harum architecto eum quas amet aut provident provident? In rerum debitis vel asperiores eaque sed explicabo esse ex commodi dolore?</p>
-                <p>Aut sunt neque non eveniet quaerat quo nihil nesciunt est ullam dolores sit vitae accusantium in impedit nihil qui quia officiis! Et porro esse sed totam galisum qui sint exercitationem qui sequi quaerat non commodi magnam sit eligendi necessitatibus. Eos voluptatem reiciendis hic rerum itaque rem nihil aliquid eum deserunt quidem vel quam alias. Eos inventore beatae At vero beatae vel repellendus quam eum voluptas placeat et veritatis nisi.</p>
+                <p>by Spectator Illustrations Team</p>
             </MainContent>
         </HomeWrapper>
     )
@@ -55,7 +54,7 @@ const ArrowWrapper = styled.div`
 
 const MainTitle = styled.div`
     font-family: 'Italiana', serif;
-    font-size: 3.5rem;
+    font-size: 10rem;
 `
 
 const MainContent = styled.div`

@@ -94,6 +94,7 @@ const ArrowWrapper = styled.div`
 
   :hover {
     opacity: 0.5;
+    cursor: pointer;
   }
 
   svg {
@@ -115,7 +116,7 @@ const CarouselWrapper = styled.div`
   position: relative;
   margin-bottom: 0;
 
-  height: 65vh;
+  height: 38vw;
 
   @media (max-width:${device.tablet}) {
     margin: 3rem auto 0rem auto;
