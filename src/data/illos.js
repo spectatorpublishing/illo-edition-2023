@@ -152,7 +152,7 @@ export const illos = [
       },
       {
         id: 12,
-        location: "",
+        location: "Amity Hall",
         img_link: "https://illoedition2023.s3.amazonaws.com/10pm-12pm+Liza+Evseeva.jpg",
         text_color: "white",
         background_color: "#5D586D",
