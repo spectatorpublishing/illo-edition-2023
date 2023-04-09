@@ -8,6 +8,9 @@ import { device } from "../device";
 const Home = () => {
     return (
         <HomeWrapper background={home_background}>
+            <LogoWrapper>
+                <a href="https://columbiaspectator.com"><img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/LC75RL476NFG3P677LOBAW2MXE.png" alt="Spec logo"></img></a>
+            </LogoWrapper>
             <ArrowWrapper background={home_orb}>
                 <Link to={"/illos"}>
                     <img src={right_arrow} alt="right arrow button to illustrations page"/>
@@ -59,6 +62,29 @@ const ArrowWrapper = styled.div`
 
     a {
         margin: 4rem 4rem 0rem auto;
+        height: fit-content;
+    }
+`
+
+const LogoWrapper = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url('${props => props.background}');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    
+    img {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    a {
+        margin: 3rem auto 0rem 4rem;
         height: fit-content;
     }
 `
