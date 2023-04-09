@@ -9,7 +9,18 @@
       name="description"
       content="Illustrations Special Edition 2023"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="twitter:card" content="summary_large_image">
+    </meta>
+    <meta name="twitter:title" content="24 Hours on Campus" />
+    <meta name="twitter:site" content="@ColumbiaSpec" />
+    <meta property="og:title" content="24 Hours on Campus" />
+    <meta property="og:image"
+      content="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/XSKM555ITJFP7PNOFRHGZ7PK4E.PNG" />
+    <meta name="twitter:image"
+    content="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/XSKM555ITJFP7PNOFRHGZ7PK4E.PNG" />
+    <link rel="apple-touch-icon" href="https://s3.amazonaws.com/year-in-review-assets/CDS_Favicon.ico" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -24,7 +35,30 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Illustrations Special Edition 2023</title>
+    <title>24 Hours on Campus</title>
+    <!-- Start Single Page Apps for GitHub Pages -->
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      // This script checks to see if a redirect is present in the query string,
+      // converts it back into the correct url and adds it to the
+      // browser's history using window.history.replaceState(...),
+      // which won't cause the browser to attempt to load the new url.
+      // When the single page app is loaded further down in this file,
+      // the correct url will be waiting in the browser's history for
+      // the single page app to route accordingly.
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search.slice(1).split('&').map(function (s) {
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
